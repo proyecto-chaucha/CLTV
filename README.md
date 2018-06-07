@@ -1,11 +1,13 @@
 # CLTV (CheckLockTimeVerify)
-Colección de scripts en Python que permiten bloquear [Chauchas](https://www.chaucha.cl) en la red hasta que se cumpla la condición (nHeight >= nLockTime).
+Colección de scripts en Python que permiten bloquear [Chauchas](https://www.chaucha.cl) en la red hasta que el número de bloque sea mayor al parametro locktime definido.
 
 ## Modo de uso
 
 ### Crear dirección P2SH:
 
-El script [create.py](https://github.com/proyecto-chaucha/CLTV/blob/master/create.py) permite generar un script de desbloqueo y una dirección P2SH (que comienza con la letra M mayúscula) en base a un tiempo máximo de bloqueo **locktime** y una llave privada **privkey**.
+El script [create.py](https://github.com/proyecto-chaucha/CLTV/blob/master/create.py) permite generar un "script de desbloqueo" y una dirección P2SH (que comienza con la letra M mayúscula) en base a un tiempo máximo de bloqueo **locktime** y una llave privada **privkey**.
+
+*(Es recomendado definir el parámetro locktime en "bloques" y no en formato EPOCH)*
 
 ```
 $> python3 create.py <locktime> <privkey>
