@@ -20,7 +20,7 @@ def main():
 
     tx = ''
 
-    if balance > 0 and check_addr(address):
+    if balance > 0 and check_addr(address) and is_privkey(privkey):
         # Outputs
         out_value = int((balance - 0.001) * COIN)
         outs = [{'address' : address, 'value' : out_value}]
