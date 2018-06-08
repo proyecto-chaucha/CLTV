@@ -2,7 +2,8 @@ from argparse import ArgumentParser
 from binascii import a2b_hex
 from struct import unpack
 from functions import *
-from bitcoin import scriptaddr, deserialize, serialize, multisign
+from bitcoin import scriptaddr, deserialize, serialize, \
+                    multisign, is_privkey,  mktx
 
 p = ArgumentParser(description='OP_CHECKLOCKTIMEVERIFY tx creator !')
 p.add_argument('locktime', type=int, help='nLockTime')
