@@ -41,6 +41,12 @@ $> python3 create.py 327000 5KjD85fz6RgN7XNGUPWzBaUyV8Fha2tbdfgi3hjwhrjzRCuAjPb
 
 3. Las 20 CHA bloqueadas fueron transferidas con éxito, incluyendo [la transacción](http://insight.chaucha.cl/tx/8f750f22dc60cca6a2fe5f2273dcf46ef0fe1ba1d30ce84856d8241b9bed1b58) dentro del bloque *327003*.
 
+```
+$> python3 spend.py 327000 5KjD85fz6RgN7XNGUPWzBaUyV8Fha2tbdfgi3hjwhrjzRCuAjPb ceoNBCv1JF6GgeAhsFLk6efbRkCX5n8kZn
+> BALANCE (MJQu639U3WKH6pQdkX4FasFta1GKLFZ11X): 20.000000
+> RESPONDE: {'txid' : '8f750f22dc60cca6a2fe5f2273dcf46ef0fe1ba1d30ce84856d8241b9bed1b58'}
+```
+
 ## Prueba de funcionamiento
 
 P2SH Address: [MSxD8GjPmL6oMKLEVedg3ui8Tq5utXAodx](http://insight.chaucha.cl/address/MSxD8GjPmL6oMKLEVedg3ui8Tq5utXAodx)
