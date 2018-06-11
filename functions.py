@@ -9,6 +9,8 @@ OP_CHECKLOCKTIMEVERIFY = 'b1'
 OP_DROP = '75'
 OP_CHECKSIG = 'ac'
 COIN = 100000000
+base_fee = 0.000452
+fee_per_input = 0.000296
 
 digits58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 
@@ -31,6 +33,7 @@ def check_addr(bc):
         return False
 
 def getRedeemScript(locktime, privkey):
+    # Create hex-compressed public key
     pubkey = encode_pubkey(privtopub(privkey), 'hex_compressed')
 
     # little-endian hex packing

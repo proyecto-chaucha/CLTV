@@ -18,12 +18,16 @@ def main():
 
     script = getRedeemScript(locktime, privkey)
     ins, balance = getBalance(scriptaddr(script, 50))
+    len_inputs = len(ins)
 
     tx = ''
 
     if balance > 0 and check_addr(address) and is_privkey(privkey):
+        # Fee
+        fee = round(base_fee + fee_per_input * len_inputs, 8)
+
         # Outputs
-        out_value = int((balance - 0.001) * COIN)
+        out_value = int((balance - fee) * COIN)
         outs = [{'address' : address, 'value' : out_value}]
 
         # Make unsigned transaction
@@ -32,18 +36,18 @@ def main():
         # Append nLockTime and reset nSequence
         unpacked = deserialize(tx)
         unpacked['locktime'] = locktime
-        for i in range(len(ins)):
+        for i in range(len_inputs):
             unpacked['ins'][i]['sequence'] = 0
         tx = serialize(unpacked)
 
         # get all signatures
         sigs = []
-        for i in range(len(ins)):
+        for i in range(len_inputs):
             sigs.append(multisign(tx, i, script, privkey))
 
         # sign inputs
         unpacked = deserialize(tx)
-        for i in range(len(ins)):
+        for i in range(len_inputs):
             unpacked['ins'][i]['script'] = getLen(sigs[i]) + sigs[i]
             unpacked['ins'][i]['script'] += getLen(script) + script
         tx = serialize(unpacked)
