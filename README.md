@@ -39,7 +39,7 @@ $> python3 create.py 327000 5KjD85fz6RgN7XNGUPWzBaUyV8Fha2tbdfgi3hjwhrjzRCuAjPb
 
 2. Se enviaron 20 CHA a la dirección P2SH generada, que puedes observar en el [explorador de bloques](http://insight.chaucha.cl/tx/b0c946e3252bf45079ac2334effac59bc064df546ce7dfb5b86433508979664b).
 
-3. **ESPERANDO LA GENERACIÓN DEL BLOQUE #327.000**
+3. Las 20 CHA bloqueadas fueron transferidas con éxito, incluyendo [la transacción](http://insight.chaucha.cl/tx/8f750f22dc60cca6a2fe5f2273dcf46ef0fe1ba1d30ce84856d8241b9bed1b58) dentro del bloque *327003*.
 
 ## Prueba de funcionamiento
 
