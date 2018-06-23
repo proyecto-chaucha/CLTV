@@ -39,18 +39,16 @@ def getRedeemScript(locktime, privkey):
     # little-endian hex packing
     locktime = hexlify(pack('<i', locktime)).decode('utf-8')
 
-    if locktime[6:] == '00':
-        # locktime > 500.000.000 = block height
-        locktime = '03' + locktime[:6]
-    else:
-        # locktime < 500.000.000 = timestamp
-        locktime = '04' + locktime
+    # remove zeros
+    locktime = locktime.rstrip('0')
+    if len(locktime) % 2 > 0:
+        locktime += '0'
 
-    # 33 bytes hex-compressed pubkey
-    pubkey = '21' + pubkey
+    pubkey = getLen(pubkey) + pubkey
+    locktime = getLen(locktime) + locktime
 
     # PAY-TO-PUBKEY OP_CHECKLOCKTIMEVERIFY
-    return locktime + OP_CHECKLOCKTIMEVERIFY + OP_DROP + pubkey + OP_CHECKSIG
+    return  locktime + OP_CHECKLOCKTIMEVERIFY + OP_DROP + pubkey + OP_CHECKSIG
 
 def getBalance(addr):
     url = 'http://insight.chaucha.cl/api/addr/'
@@ -70,4 +68,4 @@ def getBalance(addr):
     return [inputs, round(balance/COIN, 8)]
 
 def getLen(string):
-    return hex(int(len(string)/2))[2:]
+    return '{:02x}'.format(int(len(string)/2))
